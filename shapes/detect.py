@@ -4,8 +4,6 @@ def is_rectangle(list_of_sides):
     :param list_of_sides:
     :return bool:
     """
-    if list_of_sides.count(list_of_sides[0]) == 4:
-        return True
     for side in list_of_sides:
         if side <= 0:
             return False
@@ -43,9 +41,6 @@ def is_triangle(list_of_sides):
             return False
     if len(list_of_sides) != 3:
         return False
-    for side in list_of_sides:
-        if list_of_sides.count(side) > 1:
-            return False
     if list_of_sides[0] + list_of_sides[1] > list_of_sides[2] and \
             list_of_sides[1] + list_of_sides[2] > list_of_sides[0] and list_of_sides[0] + list_of_sides[2] > list_of_sides[1]:
         return True

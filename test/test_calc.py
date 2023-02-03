@@ -73,7 +73,7 @@ def test_rectangle_perimeter(test_calc):
 
 
 @pytest.mark.test_calc_rectangle_area
-def test_square_area(test_calc):
+def test_rectangle_area(test_calc):
     try:
         assert test_calc.rectangle_area() == float(os.getenv("SHAPE_AREA"))
         utilities.write_file(str(inspect.currentframe().f_code.co_name)

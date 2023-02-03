@@ -21,7 +21,7 @@ def test_complex():
 @pytest.mark.test_complex_
 def test_complex_shape(test_complex):
     try:
-        assert test_complex.calculate_shape() == ast.literal_eval(os.environ["RESULR_LIST_COMPLEX"])
+        assert test_complex.calculate_shape() == ast.literal_eval(os.environ["RESULT_LIST_COMPLEX"])
         utilities.write_file(str(inspect.currentframe().f_code.co_name)
                              + " " + os.getenv("TEST_PASS") + str(test_complex.list_complex) + "\n")
     except AssertionError:

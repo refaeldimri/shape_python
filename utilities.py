@@ -19,8 +19,7 @@ class Utilities:
         time_date = os.getenv("TIMESTAMP")
         try:
             self.file = open(file_name, "a")
-            string += \
-                datetime.now().strftime(", " + time_date + "\n")
+            string = datetime.now().strftime(time_date + ": ") + string
             self.file.write(string)
             self.file.flush()
             self.file.close()

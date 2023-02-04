@@ -20,6 +20,13 @@ class Complex(object):
 
     @staticmethod
     def check_exist_shape(item_insert):
+        """
+        This function check if item(only lists) exist in list.
+        if some item is [1, 2, 3] and the list contains this item: [2, 3, 1]
+        so the function return true, because by this function is same
+        :param item_insert:
+        :return: bool
+        """
         flag = True
         for item in Complex.list_complex_utils:
             if Counter(item_insert) == Counter(item):
@@ -73,6 +80,7 @@ class Complex(object):
         :return dict:
         """
         Complex.list_complex_utils = self.check_duplicate_list()
+        list_wrong_shape = []
         dict_shapes = {
             "rectangles": [],
             "triangles": [],
@@ -85,15 +93,17 @@ class Complex(object):
                     if not self.calc.detect.is_rectangle() and not \
                             self.calc.detect.is_triangle() and not self.calc.detect.is_square():
                         raise ValueError(str(shape) + " Is not shape")
-            else:
-                for shape in Complex.list_complex_utils:
-                    self.calc.detect.list_of_sides = shape
-                    if self.calc.detect.is_rectangle():
-                        dict_shapes["rectangles"].append(self.create_object(shape))
-                    elif self.calc.detect.is_triangle():
-                        dict_shapes["triangles"].append(self.create_object(shape))
-                    elif self.calc.detect.is_square():
-                        dict_shapes["squares"].append(self.create_object(shape))
-                return dict_shapes
+            for shape in Complex.list_complex_utils:
+                self.calc.detect.list_of_sides = shape
+                if not self.calc.detect.is_rectangle() and not self.calc.detect.is_square() \
+                        and not self.calc.detect.is_triangle():
+                    list_wrong_shape.append(shape)
+                if self.calc.detect.is_rectangle():
+                    dict_shapes["rectangles"].append(self.create_object(shape))
+                elif self.calc.detect.is_triangle():
+                    dict_shapes["triangles"].append(self.create_object(shape))
+                elif self.calc.detect.is_square():
+                    dict_shapes["squares"].append(self.create_object(shape))
+            return [dict_shapes, list_wrong_shape]
         except ValueError as e:
             return str(e)

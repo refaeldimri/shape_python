@@ -24,6 +24,7 @@ def is_rectangle(listt):
 if __name__ == '__main__':
     cmp = Complex()
     print(cmp.calc.detect.is_rectangle())
+    print(cmp.calculate_shape())
 
 
 

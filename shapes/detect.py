@@ -1,7 +1,4 @@
 import dotenv
-
-
-# some init
 dotenv.load_dotenv()
 
 
@@ -23,13 +20,11 @@ class Detect(object):
         for side in self.list_of_sides:
             if not self.list_of_sides.count(side) == 2:
                 return False
-            else:
-                return True
+        return True
 
     def is_square(self):
         """
         This function get list of sided and check if it can be square
-        :param list_of_sides:
         :return bool:
         """
         for side in self.list_of_sides:

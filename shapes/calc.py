@@ -41,10 +41,7 @@ class Calc(object):
             if not self.detect.is_rectangle():
                 raise ValueError(os.getenv("NOT_RECTANGLE"))
             set_of_sides = set(self.detect.list_of_sides)
-            if len(list(set_of_sides)) == 1:
-                return list(set_of_sides)[0] ** 2
-            else:
-                return list(set_of_sides)[0] * list(set_of_sides)[1]
+            return list(set_of_sides)[0] * list(set_of_sides)[1]
         except ValueError as e:
             return str(e)
 
